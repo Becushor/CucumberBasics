@@ -1,3 +1,5 @@
+package Steps;
+
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -7,8 +9,8 @@ public class LoginStep {
     public void iNavigateToTheLoginPage() {
     }
 
-    @And("I enter the username as admin and password as admin")
-    public void iEnterTheUsernameAsAdminAndPasswordAsAdmin() {
+    @And("I enter the username as {string} and password as {string}")
+    public void iEnterTheUsernameAsAndPasswordAs(String username, String password) {
     }
 
     @And("I click login button")
