@@ -1,11 +1,17 @@
 package Pages;
 
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.PageFactory;
 
 public class SignUpPage {
+
+    public SignUpPage(WebDriver driver) {
+        PageFactory.initElements(driver, this);
+    }
 
     @FindBy(how = How.ID, using = "email")
     public WebElement txtEmail;
@@ -37,6 +43,9 @@ public class SignUpPage {
     @FindBy(how = How.XPATH, using = "/html/body/div[1]/div/div[2]/div/form/div/div[2]/div[5]/button")
     public WebElement btnConfirm;
 
+    @FindBy(how = How.XPATH, using = "/html/body/div[3]/div/div[3]/div/button")
+    public WebElement popUp;
+
     public void InsertInfo(String email, String password, String profession, String fName, String lName, String country) {
         txtEmail.sendKeys(email);
         txtPassword.sendKeys(password);
@@ -55,5 +64,12 @@ public class SignUpPage {
 
     public void Confirm() {
         btnConfirm.submit();
+    }
+
+    public boolean isPopUpActive() {
+        if (popUp.isDisplayed())
+            return true;
+        else
+            return false;
     }
 }
